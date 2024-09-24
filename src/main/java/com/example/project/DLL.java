@@ -29,7 +29,7 @@ public class DLL<T> {
         current = current.previous;
     }
     public T retrieve() {
-        return current.data;
+        ;return current.data; 
     }
     public void update(T val) {
         current.data = val;
