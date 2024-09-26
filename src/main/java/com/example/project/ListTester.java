@@ -3,20 +3,56 @@ package com.example.project;
 public class ListTester {
     public static <T> void circularLeftShift(List <T> list, int n)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // Write the method circularLeftShift, user of List ADT, that takes as input a non-empty
-        // List list and an integer n > 0 and performs n circular left shift of the list.
-        // Example 2.1. Given the list l : A, B, C, D, E, circularShiftLeft(l, 1) results in
-        // B, C, D, E, A, circularShiftLeft(l, 2) results in C, D, E, A, B.
+        if(n>0 && list.empty()==false) {
+    		
+            list.findFirst();
+            T tmp = list.retrieve();
+            List <T> list2 ;
+            int u = 0 ;
+                while(list.last()==false) {
+                    u+=1;
+                    if(u>=n) {
+                        tmp = list.retrieve();
+                        list.insert(tmp);
+                        
+                    }
+                    list.findNext();
+                }
+                list.findFirst();
+                for(int i = 1 ; i <= n; i++) {
+                    tmp = list.retrieve();
+                    list.insert(tmp);
+                    list.findNext();
+                }
+        }
     }
     public static <T> void reverseCopy(DLL<T> l1, DLL<T> l2)
     {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // Write the method reverseCopy, user of DoubleLinkedList, which copies the elements
-        // of l1 to l2 in reverse order. The list l1 must not change. Assume that l2 is empty.
-        // The method signature is public static <T> void reverseCopy(DoubleLinkedList<T> l1,
-        // DoubleLinkedList<T> l2).
-        // Example 4.1. If l1 : A ↔ B ↔ C ↔ D, then calling reverseCopy(l1, l2) results in
-        // l2 : D ↔ C ↔ B ↔ A.
+        {
+            int n = 1;
+            l1.findFirst();
+            while(l1.last()==false) {
+                l1.findNext();		n++;
+            }
+        while(n!=0) {
+            l2.insert(l1.retrieve());
+            l1.findPrevious();
+            n--;
+        }
+            
     }
+
+    
+    	int n = 1;
+    	l1.findFirst();
+    	while(l1.last()==false) {
+    		l1.findNext();		n++;
+    	}
+    while(n!=0) {
+    	l2.insert(l1.retrieve());
+    	l1.findPrevious();
+    	n--;
+    }
+    
 }
+    }
