@@ -55,77 +55,43 @@ public class LinkedList<T> implements List<T>{
         }
     }
     public T mostFrequentElement() {
-        if(empty())return null ;
-    	char most = 'N' ;
-    	current = head;
-    	
-    	int a = 0 , b = 0 , c =0 , d=0 ,e=0;
-    	while(last()==false) {
-    		if((char)retrieve()=='A') {
-    			a+=1;
-    		}if((char)retrieve()=='B') {
-    			b+=1;
-    		}if((char)retrieve()=='C') {
-    			c+=1;
-    		}if((char)retrieve()=='D') {
-    			d+=1;
-    		}if((char)retrieve()=='E') {
-    			e+=1;
-    		}
-    		if(a>b&&a>c&&a>d&&a>e) {
-    			most = 'A';
-    		}if(b>a&&b>c&&b>d&&b>e) {
-    			most = 'B';
+       //         Write the method mostFrequentElement, member of the class LinkedList, that returns
+        // the most frequent element in the list. The most frequent element is the element
+        // appearing the highest number of times. If one or more element appear the same
+        // number of times, the one encountered earlier is returned.
+        // Example 1.1. Given the list l : A, B, C, B, C, D, E, mostFrequentElement() returns
+        // B.
+		if(empty()){
+		return null;}
 
-    		}if(c>b&&c>a&&c>d&&c>e) {
-    			most = 'C';
-
-    		}if(d>b&&d>c&&d>a&&d>e) {
-    			most = 'D';
-
-    		}if(e>b&&e>c&&e>d&&e>a) {
-    			most = 'E';
-
-    		}
-    			
-    		
-    		findNext();
-    	}
-    	if((char)retrieve()=='A') {
-			a+=1;
-		}if((char)retrieve()=='B') {
-			b+=1;
-		}if((char)retrieve()=='C') {
-			c+=1;
-		}if((char)retrieve()=='D') {
-			d+=1;
-		}if((char)retrieve()=='E') {
-			e+=1;
-		}
-		if(a>b&&a>c&&a>d&&a>e) {
-			most = 'A';
-		}if(b>a&&b>c&&b>d&&b>e) {
-			most = 'B';
-
-		}if(c>b&&c>a&&c>d&&c>e) {
-			most = 'C';
-
-		}if(d>b&&d>c&&d>a&&d>e) {
-			most = 'D';
-
-		}if(e>b&&e>c&&e>d&&e>a) {
-			most = 'E';
-
-		}
-		current = head;  current = head;
-		while(last()==false) {
-			if(most==(char)retrieve()) {
-				return (T)current;
+	    Node<T> e = null;
+	    Node<T> tmp1 = head;
+	    Node<T> tmp2 = head;
+		int o = 0;
+		while(tmp1 != null){
+			int t = 0 ;
+			while(tmp2!=null){
+				if(tmp1.data==tmp2.data){
+					t++;
+					
+				}
+				tmp2=tmp2.next;
+				
 			}
-    		findNext();
+			if(t>o){
+				o=t;
+				e = tmp1;
+
+			}
+			tmp1 = tmp1.next;
+			tmp2=head;
+
 
 		}
-    	return (T)current;
-        
-    }
+		return e.data;
+
+
+
+    
+	}
 }
